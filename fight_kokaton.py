@@ -142,6 +142,9 @@ class Bomb:
 
 
 class Score:
+    """
+    スコアを描画するクラス
+    """
     def __init__(self):
         self.fonto = pg.font.Font(None, 50)
         self.score_value = 0
@@ -149,9 +152,17 @@ class Score:
         self.img = self.fonto.render(f"Score: {self.score_value}", 0, self.color)
         self.rct = self.img.get_rect()
         self.rct.center = 100, HEIGHT - 50
-    def score_up(self, value):
+    def score_up(self, value: int):
+        """
+        引数に基づきスコア値を増やす
+        引数 value：スコア値の増分
+        """
         self.score_value += value
     def update(self, screen: pg.Surface):
+        """
+        スコアをサーフェスに描画する
+        引数 screen：画面Surface
+        """
         self.img = self.fonto.render(f"Score: {self.score_value}", 0, self.color)
         screen.blit(self.img, self.rct)
 
